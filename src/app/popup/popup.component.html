@@ -1,0 +1,59 @@
+<ng-template #popMenu> 
+  <div class="row"> 
+    <div class = "col-sm-6 col-md-6 col-lg-6">
+      <div class="row ">
+              
+      </div>
+    </div>
+    <div  class = "col-sm-6 col-md-6 col-lg-6">
+      <button type="button" class="close" style="border-radius: 55%;" (click)="p.close()">
+        <div class="circle"></div>
+      </button>
+      <div class=row>
+        <div class = "col-sm-6 col-md-6 col-lg-6">
+          <button class="btn btn-success" (click)="showDocViewer(); p.ngOnChanges({ngbPopover: docViewer})">Описание</button>           
+        </div>
+        <div class = " col-sm-6 col-md-6 col-lg-6">
+          <button class="btn btn-success"(click)="showJsonViewer(); p.ngOnChanges({ngbPopover: jsonViewer})">Дърво</button>
+        </div>   
+      </div> 
+     </div>     
+    </div>
+</ng-template> 
+
+<ng-template #docViewer class="popover">
+    <div class="view-holder">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada fames ac turpis egestas maecenas pharetra convallis. Magna etiam tempor orci eu lobortis elementum. Sed elementum tempus egestas sed sed risus pretium quam. Enim neque volutpat ac tincidunt vitae semper quis lectus. Nisi est sit amet facilisis magna etiam tempor orci. Montes nascetur ridiculus mus mauris vitae ultricies. Est placerat in egestas erat imperdiet sed euismod. Non diam phasellus vestibulum lorem sed. Ullamcorper malesuada proin libero nunc. In mollis nunc sed id semper risus in hendrerit. Ornare quam viverra orci sagittis. Egestas diam in arcu cursus euismod quis. Donec massa sapien faucibus et molestie ac feugiat sed. Amet luctus venenatis lectus magna fringilla urna. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Vitae aliquet nec ullamcorper sit amet risus nullam eget felis. Massa ultricies mi quis hendrerit dolor magna eget est lorem. At volutpat diam ut venenatis. Suspendisse potenti nullam ac tortor. cras pulvinar. Adipiscing enim eu turpis egestas.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada fames ac turpis egestas maecenas pharetra convallis. Magna etiam tempor orci eu lobortis elementum. Sed elementum tempus egestas sed sed risus pretium quam. Enim neque volutpat ac tincidunt vitae semper quis lectus. Nisi est sit amet facilisis magna etiam tempor orci. Montes nascetur ridiculus mus mauris vitae ultricies. Est placerat in egestas erat imperdiet sed euismod. Non diam phasellus vestibulum lorem sed. Ullamcorper malesuada proin libero nunc. In mollis nunc sed id semper risus in hendrerit. Ornare quam viverra orci sagittis. Egestas diam in arcu cursus euismod quis. Donec massa sapien faucibus et molestie ac feugiat sed. Amet luctus venenatis lectus magna fringilla urna. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Vitae aliquet nec ullamcorper sit amet risus nullam eget felis. Massa ultricies mi quis hendrerit dolor magna eget est lorem. At volutpat diam ut venenatis. Suspendisse potenti nullam ac tortor. cras pulvinar. Adipiscing enim eu turpis egestas.</p>
+    </div>
+</ng-template> 
+
+<ng-template  class="" #jsonViewer> 
+  <div class="view-holder table-responsive">
+    <table class=" table table-striped ">
+      <tbody>
+        <tr *ngFor="let element of jsonContent | keyvalue">
+          <th>
+            <ngx-json-viewer [json]="element" [expanded]="false"></ngx-json-viewer>
+            
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>    
+</ng-template>
+
+<ng-template #mainViewer>
+  <div class="row">
+    
+    <div class = "col-sm-6 col-md-6 col-lg-6">
+      <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+    </div>
+    <div class = " overflow-auto col-sm-6 col-md-6 col-lg-6">
+      <ng-container class="" [ngTemplateOutlet]="viewerToShow"></ng-container>
+    </div>
+  </div>
+ 
+</ng-template>
+
+<button class="btn btn-primary" (click)="p.open()" #p="ngbPopover" [autoClose] = "false" triggers="manual" [ngbPopover]="mainViewer" [popoverTitle]="popMenu">Popup</button>
