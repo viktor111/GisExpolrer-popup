@@ -1,6 +1,6 @@
 import { element } from 'protractor';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, OnInit, ViewChild, TemplateRef, AfterContentInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, AfterContentInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { HttpClient } from '@angular/common/http';
@@ -15,6 +15,7 @@ import {NgxGalleryAnimation} from '@kolkov/ngx-gallery';
   styleUrls: ['./popup.component.css']
 })
 export class PopupComponent implements OnInit {
+
   @ViewChild('docViewer' , {static: true}) docViewer: TemplateRef<any>;
   @ViewChild('jsonViewer' , {static: true}) jsonViewer: TemplateRef<any>;
   @ViewChild('p') pop;
@@ -102,7 +103,7 @@ export class PopupComponent implements OnInit {
     this.http.get('https://api.apify.com/v2/key-value-stores/np4eYah8M5uQtj0Su/records/LATEST?disableRedirect=true')
     .subscribe(response => {
       console.log(response);
-      this.jsonContent = response;
+      this.jsonContent = [{res: response, res1: response}, {res: response, res1: response}];
       // {arr: [1, 3, 4]}
       // {doc: {array: [1, 3, 5]}}
     });

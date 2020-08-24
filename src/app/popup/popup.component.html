@@ -33,11 +33,10 @@
     <table class=" table table-striped ">
       <tbody>
         <tr *ngFor="let element of jsonContent | keyvalue">
-          <th>
-            <ngx-json-viewer [json]="element" [expanded]="false"></ngx-json-viewer>
-            
-          </th>
-        </tr>
+          <td >
+            <ngx-json-viewer [json]="element.value" [expanded]="false"></ngx-json-viewer>              
+          </td>
+        </tr>        
       </tbody>
     </table>
   </div>    

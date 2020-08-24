@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     NgxJsonViewerModule,
     HttpClientModule,
-    NgxGalleryModule
+    NgxGalleryModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
